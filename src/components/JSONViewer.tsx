@@ -66,7 +66,7 @@ const JSONViewer = () => {
         <>
             <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#fff] to-[#fff]">
                 <div className="container flex flex-col items-left justify-center ">
-                    <input  type="text" name="name" className='text-2xl h-12'  value={deepKey} onChange={(event) => setDeepKey(event.target.value)}  />
+                    <input  type="text" name="name" className='text-2xl h-12 border-blue-400 border-solid border-2'  value={deepKey} onChange={(event) => setDeepKey(event.target.value)}  />
                     <div className='text-xl h-36'>
                         {displayData(data)}
                     </div>
