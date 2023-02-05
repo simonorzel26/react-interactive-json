@@ -1,4 +1,5 @@
 
+import { useState } from 'react';
 import data from '../../data.json'
 
 const objectDeepKeys: any = (obj: { [x: string]: any; date?: string; hasError?: boolean; fields?: { id: string; prop: string; value: string; hasError: boolean; }[]; }) => {
@@ -15,10 +16,20 @@ const objectDeepKeys: any = (obj: { [x: string]: any; date?: string; hasError?: 
     return keys;
 }
 
+function fromPath(obj: { [x: string]: any; date?: string; hasError?: boolean; fields?: { id: string; prop: string; value: string; hasError: boolean; }[]; }, path: string, splitter = '.') {
+    if (!path)
+        return obj;
+
+    if (typeof path === 'number' || !~path.indexOf(splitter))
+        return obj[path];
+
+    return path.split(splitter).reduce((o, i) => (o === Object(o) ? o[i] : o), obj);
+}
+
 const JSONViewer = () => {
+    const [deepKey, setDeepKey] = useState('')
     const jsonData = JSON.stringify(data, null, 2).split(/\n/gi);
     const deepKeys = objectDeepKeys(data);
-    console.log(deepKeys);
 
     const SingleLineIteration = ({ text }: { text: string }) => {
         const regex = /"[A-Za-z]+":/gi;
@@ -30,16 +41,12 @@ const JSONViewer = () => {
             deepKey = deepKeys.shift();
         }
 
-        const onKeyClick = (deepKey: string) => {
-            console.log(deepKey);
-        }
-
         return (
             <pre>
                 {splitAtKey[0]}
                 <span
-                    onClick={() => onKeyClick(deepKey)}
-                    className='hover:underline hover:text-blue-600 cursor-pointer'
+                    onClick={() => setDeepKey(deepKey)}
+                    className='hover:underline text-blue-600 cursor-pointer'
                 >
                     {matchedKey}
                 </span>
@@ -48,10 +55,21 @@ const JSONViewer = () => {
         )
     }
 
+    const displayData = (data: { [x: string]: any; date: string | undefined; hasError: boolean | undefined; fields: { id: string; prop: string; value: string; hasError: boolean; }[] | { id: string; prop: string; value: string; hasError: boolean; }[] | undefined; }) => {
+        const fromPathData = fromPath(data, deepKey);
+        if (typeof fromPathData === 'object') return 'Object';
+
+        return JSON.stringify(fromPath(data, deepKey), null, 2);
+    }
+
     return (
         <>
             <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#fff] to-[#fff]">
                 <div className="container flex flex-col items-left justify-center ">
+                    <input  type="text" name="name" className='text-2xl h-12'  value={deepKey} onChange={(event) => setDeepKey(event.target.value)}  />
+                    <div className='text-xl h-36'>
+                        {displayData(data)}
+                    </div>
                     {jsonData.map((i, index) => (
                         <SingleLineIteration key={index} text={i} />
                     ))}
