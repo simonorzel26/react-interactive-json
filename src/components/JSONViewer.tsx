@@ -2,12 +2,12 @@
 import { useState } from 'react';
 import data from '../../data.json'
 
-const objectDeepKeys: any = (obj: { [x: string]: any; date?: string; hasError?: boolean; fields?: { id: string; prop: string; value: string; hasError: boolean; }[]; }) => {
-    var keys: any[] = [];
-    for (var key in obj) {
+const objectDeepKeys: any = (obj: any) => {
+    let keys: any[] = [];
+    for (const key in obj) {
         keys.push(key);
         if (typeof obj[key] === "object") {
-            var subkeys = objectDeepKeys(obj[key]).filter((subkey: string | any[]) => subkey.length > 1);
+            const subkeys = objectDeepKeys(obj[key]).filter((subkey: string | any[]) => subkey.length > 1);
             keys = keys.concat(subkeys.map(function (subkey: string) {
                 return key + "." + subkey;
             }));
@@ -16,7 +16,7 @@ const objectDeepKeys: any = (obj: { [x: string]: any; date?: string; hasError?: 
     return keys;
 }
 
-function fromPath(obj: { [x: string]: any; date?: string; hasError?: boolean; fields?: { id: string; prop: string; value: string; hasError: boolean; }[]; }, path: string, splitter = '.') {
+function fromPath(obj: any, path: string, splitter = '.') {
     if (!path)
         return obj;
 
@@ -55,7 +55,7 @@ const JSONViewer = () => {
         )
     }
 
-    const displayData = (data: { [x: string]: any; date: string | undefined; hasError: boolean | undefined; fields: { id: string; prop: string; value: string; hasError: boolean; }[] | { id: string; prop: string; value: string; hasError: boolean; }[] | undefined; }) => {
+    const displayData = (data: any) => {
         const fromPathData = fromPath(data, deepKey);
         if (typeof fromPathData === 'object') return 'Object';
 
