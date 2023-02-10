@@ -17,7 +17,7 @@ const JSONViewer = ({ json, setSelectedKey }: Props) => {
             <div>
                 <pre>
                     {jsonData.map((i, index) => (
-                        <SingleLineIteration key={index} deepKeys={deepKeys} deepKeyIndex={index} text={i} setDeepKey={setSelectedKey} />
+                        <SingleLineIteration key={index} deepKeys={deepKeys} text={i} setDeepKey={setSelectedKey} />
                     ))}
                 </pre>
             </div>
