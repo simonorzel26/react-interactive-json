@@ -2,7 +2,7 @@ import { type NextPage } from "next";
 import JSONViewer from "../components/JSONViewer";
 import data from '../../data.json'
 import { useState } from "react";
-import { displayData, isNumeric } from "../components/helpers";
+import { displayData } from "../components/helpers";
 
 const Home: NextPage = () => {
   const [deepKey, setDeepKey] = useState('')
