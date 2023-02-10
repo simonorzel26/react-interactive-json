@@ -22,3 +22,10 @@ export const objectDeepKeys: any = (obj: any) => {
     }
     return keys;
 }
+
+export const displayData = (data: any, deepKey: string) => {
+    const fromPathData = fromPath(data, deepKey);
+    if (typeof fromPathData === 'object') return 'Object';
+
+    return JSON.stringify(fromPathData, null, 2);
+}

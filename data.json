@@ -1,43 +1,68 @@
 {
-    "date": "2021-10-27T07:49:14.896Z",
-    "hasError": false,
-    "fields033-_\n": [
-        {
-            "id": "4c212130",
-            "prop": "iban",
-            "value": "DE81200505501265402568",
-            "hasError": false
+    "WeIrD_-NAMIng?!234!§$%&/()=?+*#^<>|": {
+        "inputUnitType": "metric"
+    },
+    "config": {
+        "inputUnitType": "metric"
+    },
+    "nutritionTableData": {
+        "calories": {
+            "value": 140,
+            "unit": "Kcal"
         },
-        
-        {
-            "id": "4c212130",
-            "prop": "iban",
-            "value": "DE81200505501265402568",
-            "hasError": false
+        "energy": {
+            "value": 0,
+            "unit": "g"
         },
-        
-        {
-            "id": "4c212130",
-            "prop": "iban",
-            "value": "DE81200505501265402568",
-            "hasError": false,
-            "casError": false,
-            "fields": [
-                {
-                    "id": "4c212130",
-                    "prop": "iban",
-                    "value": "DE81200505501265402568",
-                    "hasError": false
+        "deepNest": {
+            "calories": {
+                "value": 140,
+                "unit": "Kcal"
+            },
+            "energy": {
+                "value": 0,
+                "unit": "g"
+            },
+            "deeperNest": {
+                "calories": {
+                    "value": 140,
+                    "unit": "Kcal"
                 },
-                
-                {
-                    "id": "4c212130",
-                    "prop": "iban",
-                    "value": "DE81200505501265402568",
-                    "hasError": false,
-                    "genericKeyName": false
+                "energy": {
+                    "value": 0,
+                    "unit": "g"
                 }
-            ]
+            }
         }
-    ]
+    },
+    "array": [
+        {
+            "value": 140,
+            "unit": "Kcal"
+        },
+        {
+            "value": 0,
+            "unit": "g"
+        },
+        {
+            "calories": {
+                "value": 140,
+                "unit": "Kcal"
+            },
+            "energy": {
+                "value": 0,
+                "unit": "g"
+            },
+            "deeperNest": {
+                "calories": {
+                    "value": 140,
+                    "unit": "Kcal"
+                },
+                "energy": {
+                    "value": 0,
+                    "unit": "g"
+                }
+            }
+        }
+        ]
 }
