@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 
-const SingleLineIteration = ({ text, deepKeys, deepKeyIndex, setDeepKey }: { text: string, deepKeys: string[], deepKeyIndex: number, setDeepKey: Dispatch<SetStateAction<string>> }) => {
-    const regex = /"[A-Za-z]+":/gi;
+const SingleLineIteration = ({ text, deepKeys, setDeepKey }: { text: string, deepKeys: string[], setDeepKey: Dispatch<SetStateAction<string>> }) => {
+    const regex = /"[A-Za-z0-9-_\\]+":/gi;
     const splitAtKey = text.split(regex);
     const matchedKey = text.match(regex);
     const deepKey = matchedKey ? deepKeys.shift() : null;
