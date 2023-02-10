@@ -4,22 +4,22 @@ import { objectDeepKeys } from './helpers';
 import SingleLineIteration from './SingleLineIteration';
 
 type Props = {
-    json: JSON,
+    json: any,
     setSelectedKey: Dispatch<SetStateAction<string>>
 }
 
-const JSONViewer = ({json, setSelectedKey}:Props) => {
+const JSONViewer = ({ json, setSelectedKey }: Props) => {
     const jsonData = JSON.stringify(json, null, 2).split(/\n/gi);
     const deepKeys = objectDeepKeys(json);
 
     return (
         <>
             <div>
-                {jsonData.map((i, index) => (
-                    <pre>
+                <pre>
+                    {jsonData.map((i, index) => (
                         <SingleLineIteration key={index} deepKeys={deepKeys} deepKeyIndex={index} text={i} setDeepKey={setSelectedKey} />
-                    </pre>
-                ))}
+                    ))}
+                </pre>
             </div>
         </>
     );
