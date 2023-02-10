@@ -1,4 +1,4 @@
-JSON to HTML formatter maintaining format while allowing forinteractive callbacks on json keys.
+JSON to HTML formatter maintaining format while allowing for interactive callbacks on json keys.
 
 Install and use:
 
